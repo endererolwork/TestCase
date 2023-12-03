@@ -2,7 +2,7 @@
 
 namespace AlictusPlatform {
     public abstract class EntitySpawnManager : MonoBehaviour {
-        [SerializeField] protected SpawnPointStrategyType spawnPointStrategyType = SpawnPointStrategyType.Linear;
+        [SerializeField] protected SpawnPointStrategyType spawnPointStrategyType = SpawnPointStrategyType.Random;
         [SerializeField] protected Transform[] spawnPoints;
         
         protected ISpawnPointStrategy spawnPointStrategy;
