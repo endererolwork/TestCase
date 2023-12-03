@@ -1,1 +1,82 @@
-{}
+{
+    "name": "InputReader",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "460ba2a6-b6f0-4477-a4ea-521547d0a62d",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "08ca56c0-c243-42c8-94ab-bac1764daee5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Look",
+                    "type": "Button",
+                    "id": "e6647d19-94d6-4409-ad90-8c56ee1dac83",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "74a3fb39-9744-4e42-9256-2b07c576a997",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03756ec0-1aa9-45fc-a5a3-1f57de3e1c87",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerCamera",
+            "id": "25be7089-dc13-4dad-974a-16f828f0fbfc",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "83489d93-14ca-41cd-8586-7cac32cf17ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0ad72290-6e15-455d-b04d-6cf161527665",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

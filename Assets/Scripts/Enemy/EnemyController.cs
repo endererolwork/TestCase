@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Observer<int> onEnemyDeath = new Observer<int>(0);
 
-    // Update is called once per frame
-    void Update()
+    public void Die()
     {
-        
+        // Düşmanın ölme işlemleri burada gerçekleştirilir.
+
+        // Observer'a bilgi gönderme
+        onEnemyDeath.Set(onEnemyDeath + 1);
     }
 }
