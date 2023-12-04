@@ -129,10 +129,11 @@ public class PlayerController : MonoBehaviour
                     .OnComplete(() =>
                     {
                         // Damage the enemy when the boomerang reaches the destination
-                        hitCollider.GetComponent<Health>().TakeDamage(50); // Adjust damage as needed
+                        hitCollider.GetComponent<Health>().TakeDamage(100); // Adjust damage as needed
                     });
             }
         }
+        Destroy(boomerang, 3.0f);
     }
     
     private void OnTriggerEnter(Collider other)

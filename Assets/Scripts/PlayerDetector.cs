@@ -26,28 +26,18 @@ namespace AlictusPlatform {
             detectionStrategy = new ConeDetectionStrategy(detectionAngle, detectionRadius, innerDetectionRadius);
         }
         
-        void Update() => detectionTimer.Tick(Time.deltaTime);
+        void Update() {
+            detectionTimer.Tick(Time.deltaTime);
+
+            // Eğer Player null ise ve detectionTimer çalışmıyorsa (yani detectionTimer süresi dolmuşsa)
+            if (Player == null && !detectionTimer.IsRunning) {
+                // Oyuncu yoksa GameManager'ı kullanarak oyunu durdur
+                GameManager.Instance.ReloadCurrentScene(); // GameManager'da bir "PauseGame" fonksiyonunuz varsa onu çağırın
+            }
+        }
 
         public bool CanDetectPlayer() {
-            if (detectionTimer.IsRunning)
-            {
-                return true;
-            }
-            else
-            {
-                // Check if the player exists
-                if (Player == null)
-                {
-                    // Player is destroyed, run the GameManager action (e.g., load a scene)
-                    GameManager.Instance.ReloadCurrentScene(); // Modify this line based on your GameManager implementation
-                    return false; // Player is not detected
-                }
-                else
-                {
-                    // Player exists, check using the detection strategy
-                    return detectionStrategy.Execute(Player, transform, detectionTimer);
-                }
-            }
+            return detectionTimer.IsRunning || detectionStrategy.Execute(Player, transform, detectionTimer);
         }
 
         public bool CanAttackPlayer() {

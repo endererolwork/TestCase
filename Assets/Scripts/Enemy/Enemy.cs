@@ -18,7 +18,8 @@ namespace AlictusPlatform
         [SerializeField] private float projectileForce = 10f;
         [SerializeField] private float projectileLifetime = 5f;
         [SerializeField] private float projectileSpawnDistance = 2f; 
-
+        
+        [SerializeField] private Transform respawnArea;
 
         StateMachine stateMachine;
 
@@ -83,6 +84,8 @@ namespace AlictusPlatform
             // Deal damage to the player
             playerDetector.PlayerHealth.TakeDamage(10);
         }
+        
+        
 
     }
 }

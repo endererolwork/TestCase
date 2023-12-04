@@ -2,7 +2,7 @@
     public class EntitySpawner<T> where T : Entity {
         IEntityFactory<T> entityFactory;
         ISpawnPointStrategy spawnPointStrategy;
-        
+    
         public EntitySpawner(IEntityFactory<T> entityFactory, ISpawnPointStrategy spawnPointStrategy) {
             this.entityFactory = entityFactory;
             this.spawnPointStrategy = spawnPointStrategy;
@@ -12,4 +12,5 @@
             return entityFactory.Create(spawnPointStrategy.NextSpawnPoint());
         }
     }
+
 }
