@@ -84,11 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfb98116e5666c43863a991b78cc281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionAngle: 60
-  detectionRadius: 10
+  detectionAngle: 120
+  detectionRadius: 20
   innerDetectionRadius: 5
   detectionCooldown: 1
-  attackRange: 5
+  attackRange: 15
 --- !u!114 &1403778090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +106,10 @@ MonoBehaviour:
   animator: {fileID: 177445833765704356}
   wanderRadius: 7
   timeBetweenAttacks: 1
+  projectileForce: 10
+  projectileLifetime: 10
+  rangedProjectilePrefab: {fileID: 4811355913363815561, guid: ce3d0ae7b46ca314991acca6c39c4904,
+    type: 3}
 --- !u!114 &1403778091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   playerHealthChannel: {fileID: 0}
+  enemyPoints: 1
 --- !u!1001 &5988942677016244021
 PrefabInstance:
   m_ObjectHideFlags: 0

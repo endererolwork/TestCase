@@ -2,5 +2,8 @@
 
 namespace AlictusPlatform {
     [CreateAssetMenu(menuName = "Events/FloatEventChannel")]
-    public class FloatEventChannel : EventChannel<float> { }
+    public class FloatEventChannel : EventChannel<float>
+    {
+        
+    }
 }

@@ -29,7 +29,25 @@ namespace AlictusPlatform {
         void Update() => detectionTimer.Tick(Time.deltaTime);
 
         public bool CanDetectPlayer() {
-            return detectionTimer.IsRunning || detectionStrategy.Execute(Player, transform, detectionTimer);
+            if (detectionTimer.IsRunning)
+            {
+                return true;
+            }
+            else
+            {
+                // Check if the player exists
+                if (Player == null)
+                {
+                    // Player is destroyed, run the GameManager action (e.g., load a scene)
+                    GameManager.Instance.ReloadCurrentScene(); // Modify this line based on your GameManager implementation
+                    return false; // Player is not detected
+                }
+                else
+                {
+                    // Player exists, check using the detection strategy
+                    return detectionStrategy.Execute(Player, transform, detectionTimer);
+                }
+            }
         }
 
         public bool CanAttackPlayer() {

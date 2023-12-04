@@ -11,6 +11,7 @@ namespace AlictusPlatform {
         protected static readonly int DieHash = Animator.StringToHash("Death");
         
         protected const float crossFadeDuration = 0.1f;
+        
 
         protected EnemyBaseState(Enemy enemy, Animator animator) {
             this.enemy = enemy;

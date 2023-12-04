@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +9,6 @@ namespace AlictusPlatform
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI killText;
 
-
         private int currentScore;
         private int currentKill;
 
@@ -20,14 +17,27 @@ namespace AlictusPlatform
             UpdateScoreText();
         }
 
-        private void OnEnable() => Collectible.OnAnyCollected += AddScore;
-        private void OnDisable() => Collectible.OnAnyCollected -= AddScore;
+        private void OnEnable()
+        {
+            Collectible.OnAnyCollected += AddScore;
+            Health.OnAnyKilled += KillEnemy;
+        }
 
-        // add method for killing
+        private void OnDisable()
+        {
+            Collectible.OnAnyCollected -= AddScore;
+            Health.OnAnyKilled -= KillEnemy;
+        }
 
         public void AddScore(int points)
         {
             currentScore += points;
+            UpdateScoreText();
+        }
+
+        public void KillEnemy(int enemyPoints)
+        {
+            currentKill += enemyPoints;
             UpdateScoreText();
         }
 

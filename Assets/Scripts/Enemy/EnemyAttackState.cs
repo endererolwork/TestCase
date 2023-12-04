@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 namespace AlictusPlatform {
     public class EnemyAttackState : EnemyBaseState {
         readonly NavMeshAgent agent;
         readonly Transform player;
+        
+        
+     
         
         public EnemyAttackState(Enemy enemy, Animator animator, NavMeshAgent agent, Transform player) : base(enemy, animator) {
             this.agent = agent;

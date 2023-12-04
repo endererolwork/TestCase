@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float autoAttackCooldown = 1.0f;
     private float lastAttackTime;
 
-    
+    [SerializeField]private GameObject panel;
 
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private CharacterController controller;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        panel.gameObject.SetActive(false);
     }
 
     void Update()
@@ -132,6 +134,18 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            PlayerDeath(); // Call PlayerDeath when colliding with an object with the "Enemy" tag
+        }
+    }
 
+    public void PlayerDeath()
+    {
+        panel.gameObject.SetActive(true);
+    }
 
 }

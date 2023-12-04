@@ -1,4 +1,6 @@
 // Health.cs
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +10,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int maxHealth = 100;
     [SerializeField] FloatEventChannel playerHealthChannel;
+    [SerializeField] private int enemyPoints = 1;
+    public static event Action<int> OnAnyKilled;
 
     int currentHealth;
 
@@ -48,6 +52,9 @@ public class Health : MonoBehaviour
     {
         // Play death animation or perform other death-related actions
         yield return new WaitForSeconds(1.0f); // Adjust as needed
+
+        // Notify that the enemy has been killed
+        OnAnyKilled?.Invoke(enemyPoints); // Replace EnemyPoints with the actual points you want to assign
 
         // Destroy the object after the death animation or actions
         Destroy(gameObject);
