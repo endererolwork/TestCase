@@ -1,10 +1,9 @@
-// Health.cs
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AlictusPlatform;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -12,6 +11,8 @@ public class Health : MonoBehaviour
     [SerializeField] FloatEventChannel playerHealthChannel;
     [SerializeField] private int enemyPoints = 1;
     public static event Action<int> OnAnyKilled;
+    
+    [SerializeField]private GameObject panel;
 
     int currentHealth;
 
@@ -40,6 +41,12 @@ public class Health : MonoBehaviour
                 StartCoroutine(Die());
             }
         }
+
+        // Check if player health is 0
+        if (gameObject.CompareTag("Player") && currentHealth <= 0)
+        {
+            ReloadScene();
+        }
     }
 
     void PublishHealthPercentage()
@@ -56,7 +63,21 @@ public class Health : MonoBehaviour
         // Notify that the enemy has been killed
         OnAnyKilled?.Invoke(enemyPoints); // Replace EnemyPoints with the actual points you want to assign
 
-        // Destroy the object after the death animation or actions
-        Destroy(gameObject);
+        // Check if the object is the player
+        if (gameObject.CompareTag("Player"))
+        {
+            ReloadScene();
+        }
+        else
+        {
+            // Destroy the object after the death animation or actions
+            Destroy(gameObject);
+        }
+    }
+
+    void ReloadScene()
+    {
+            panel.gameObject.SetActive(true);
+        
     }
 }

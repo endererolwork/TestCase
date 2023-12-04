@@ -17,8 +17,8 @@ namespace AlictusPlatform
 
         [SerializeField] private float projectileForce = 10f;
         [SerializeField] private float projectileLifetime = 5f;
-        [SerializeField] private float projectileSpawnDistance = 2f; 
-        
+        [SerializeField] private float projectileSpawnDistance = 1f;
+
         [SerializeField] private Transform respawnArea;
 
         StateMachine stateMachine;
@@ -65,8 +65,13 @@ namespace AlictusPlatform
 
             attackTimer.Start();
 
-            // Calculate the position to instantiate the projectile
-            Vector3 instantiatePosition = transform.position + transform.forward * projectileSpawnDistance;
+            // Generate a random offset for the projectile position
+            Vector3 randomOffset = new Vector3(Random.Range(-projectileSpawnDistance, projectileSpawnDistance),
+                Random.Range(-projectileSpawnDistance, projectileSpawnDistance),
+                Random.Range(-projectileSpawnDistance, projectileSpawnDistance));
+
+            // Calculate the position to instantiate the projectile with the random offset
+            Vector3 instantiatePosition = transform.position + randomOffset;
 
             // Instantiate the projectile at the calculated position
             GameObject projectile = Instantiate(rangedProjectilePrefab, instantiatePosition, Quaternion.identity);
@@ -84,8 +89,5 @@ namespace AlictusPlatform
             // Deal damage to the player
             playerDetector.PlayerHealth.TakeDamage(10);
         }
-        
-        
-
     }
 }

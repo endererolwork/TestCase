@@ -8,9 +8,7 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
-        // Düşmanın ölme işlemleri burada gerçekleştirilir.
-
-        // Observer'a bilgi gönderme
+        //death operations ruled here
         onEnemyDeath.Set(onEnemyDeath + 1);
     }
 }

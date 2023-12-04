@@ -14,8 +14,8 @@ namespace AlictusPlatform {
         }
         
         public bool Execute(Transform player, Transform detector, CountdownTimer timer) {
-            if (timer.IsRunning) return false;
-            
+            if (player == null || detector == null || timer.IsRunning) return false;
+
             var directionToPlayer = player.position - detector.position;
             var angleToPlayer = Vector3.Angle(directionToPlayer, detector.forward);
             

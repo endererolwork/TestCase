@@ -140,6 +140,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            Debug.Log(" I hit player");
+
             PlayerDeath(); // Call PlayerDeath when colliding with an object with the "Enemy" tag
         }
     }

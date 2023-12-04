@@ -67,7 +67,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6200301598508673718}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.3
@@ -108,6 +108,8 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   projectileForce: 10
   projectileLifetime: 10
+  projectileSpawnDistance: 2
+  respawnArea: {fileID: 0}
   rangedProjectilePrefab: {fileID: 4811355913363815561, guid: ce3d0ae7b46ca314991acca6c39c4904,
     type: 3}
 --- !u!114 &1403778091
@@ -125,6 +127,7 @@ MonoBehaviour:
   maxHealth: 10
   playerHealthChannel: {fileID: 0}
   enemyPoints: 1
+  panel: {fileID: 0}
 --- !u!1001 &5988942677016244021
 PrefabInstance:
   m_ObjectHideFlags: 0
