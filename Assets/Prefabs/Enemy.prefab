@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3894780269016266255, guid: 7d9d0ee977c764bcfab3fcb89839aedc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c6f74b982dd664cb898b46d81b9267de, type: 2}
     - target: {fileID: 5866666021909216657, guid: 7d9d0ee977c764bcfab3fcb89839aedc,
         type: 3}
       propertyPath: m_Controller
