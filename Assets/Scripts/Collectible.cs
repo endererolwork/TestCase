@@ -15,8 +15,9 @@ namespace AlictusPlatform
         {
             if (other.CompareTag("Player"))
             {
+                Debug.Log("coin");
                 OnAnyCollected?.Invoke(points);
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }

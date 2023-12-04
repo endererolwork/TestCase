@@ -2,13 +2,14 @@
 using UnityEngine.AI;
 using Utilities;
 
+
 namespace AlictusPlatform {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(PlayerDetector))]
     public class Enemy : Entity {
-        [SerializeField, ] NavMeshAgent agent;
-        [SerializeField, ] PlayerDetector playerDetector;
-        [SerializeField, ] Animator animator;
+        [SerializeField] NavMeshAgent agent;
+        [SerializeField] PlayerDetector playerDetector;
+        [SerializeField] Animator animator;
         
         [SerializeField] float wanderRadius = 10f;
         [SerializeField] float timeBetweenAttacks = 1f;
@@ -17,6 +18,7 @@ namespace AlictusPlatform {
         
         CountdownTimer attackTimer;
         
+        [SerializeField] private GameObject rangedProjectilePrefab;
 
         void Start() {
             attackTimer = new CountdownTimer(timeBetweenAttacks);
@@ -53,5 +55,7 @@ namespace AlictusPlatform {
             attackTimer.Start();
             playerDetector.PlayerHealth.TakeDamage(10);
         }
+        
+        
     }
 }

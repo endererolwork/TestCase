@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4503853668066945877
+--- !u!1 &4811355913363815561
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3876253068639613423}
-  - component: {fileID: 172522400972750410}
-  - component: {fileID: 2702189996950407808}
-  - component: {fileID: 3621332659469661345}
-  - component: {fileID: 3621332659469661349}
+  - component: {fileID: 9135804150681440002}
+  - component: {fileID: 6534941895436077804}
+  - component: {fileID: 8688521855611520151}
+  - component: {fileID: 6207422851187887219}
+  - component: {fileID: 4598575391033211737}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: RangedProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3876253068639613423
+--- !u!4 &9135804150681440002
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503853668066945877}
-  m_LocalRotation: {x: 0.007679378, y: -0, z: -0, w: 0.99997056}
-  m_LocalPosition: {x: 0.4752366, y: -3.4188395, z: 2.6458552}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_GameObject: {fileID: 4811355913363815561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.496327, y: 1.7151377, z: -5.5996494}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.88, y: 0, z: 0}
---- !u!33 &172522400972750410
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6534941895436077804
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503853668066945877}
-  m_Mesh: {fileID: 3525479140033381557, guid: 9a243ac817c1a4d719a6ff379fcfe7bc, type: 3}
---- !u!23 &2702189996950407808
+  m_GameObject: {fileID: 4811355913363815561}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8688521855611520151
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503853668066945877}
+  m_GameObject: {fileID: 4811355913363815561}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c23bea28327e443b6bb8fc93a63d50db, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,29 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3621332659469661345
-BoxCollider:
+--- !u!135 &6207422851187887219
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503853668066945877}
+  m_GameObject: {fileID: 4811355913363815561}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.59999996, y: 0.5999999, z: 0.27828726}
-  m_Center: {x: 0, y: -4.3085674e-12, z: -0.031892605}
---- !u!114 &3621332659469661349
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4598575391033211737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503853668066945877}
+  m_GameObject: {fileID: 4811355913363815561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53e5a5dc1f6271c46b8df3b2e289930a, type: 3}
+  m_Script: {fileID: 11500000, guid: a341c2d29e7892942bbc518085fabc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 1

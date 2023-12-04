@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,15 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 3.0f;
     private float gravityValue = -9.81f;
+    
+    [SerializeField] private GameObject boomerangPrefab;
+    [SerializeField] private float boomerangSpeed = 5.0f;
+    [SerializeField] private float boomerangRadius = 5.0f;
+    [SerializeField] private float autoAttackRange = 10.0f;
+    [SerializeField] private float autoAttackCooldown = 1.0f;
+    private float lastAttackTime;
+
+    
 
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private CharacterController controller;
@@ -25,6 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         // Do the Movement
         HandleMovement();
+        // Check for auto-attack when enemies are nearby
+        CheckForAutoAttack();
     }
 
     void HandleMovement()
@@ -65,4 +77,61 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+    
+    void CheckForAutoAttack()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, autoAttackRange);
+
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Enemy") && Time.time - lastAttackTime >= autoAttackCooldown)
+            {
+                // Trigger auto-attack
+                Attack();
+
+                // Update the last attack time
+                lastAttackTime = Time.time;
+            }
+        }
+    }
+
+    public void Attack()
+    {
+        // Instantiate the Boomerang at the player's position
+        GameObject boomerang = Instantiate(boomerangPrefab, transform.position, Quaternion.identity);
+
+        // Find all enemies within the specified radius
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, boomerangRadius);
+
+        // Iterate through the colliders and apply DoTween to the Boomerang
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Enemy"))
+            {
+                // Calculate the direction to the enemy
+                Vector3 direction = (hitCollider.transform.position - transform.position).normalized;
+
+                // Calculate the destination position for the Boomerang
+                Vector3 destination = hitCollider.transform.position;
+
+                // Use DoTween to move the Boomerang along a spline path
+                Vector3[] path = new Vector3[]
+                {
+                    transform.position,
+                    transform.position + transform.right * 2.0f, // Modify this point as needed
+                    destination
+                };
+
+                boomerang.transform.DOLocalPath(path, Vector3.Distance(transform.position, destination) / boomerangSpeed, PathType.CatmullRom)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() =>
+                    {
+                        // Damage the enemy when the boomerang reaches the destination
+                        hitCollider.GetComponent<Health>().TakeDamage(50); // Adjust damage as needed
+                    });
+            }
+        }
+    }
+
+
 }
